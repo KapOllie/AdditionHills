@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_addition_hills/Screens/documents/provider/documents_screen.dart';
 import 'package:flutter_addition_hills/components/side_menu.dart';
 import 'package:flutter_addition_hills/dashboard/dashboard_screen.dart';
-import 'package:flutter_addition_hills/user_management_screen/user_management.dart';
+import 'package:flutter_addition_hills/Screens/user_management_screen/user_management.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});
