@@ -17,40 +17,40 @@ class SideMenu extends StatelessWidget {
                 child: Text(
               'Admin Panel',
               style: GoogleFonts.poppins(
-                  textStyle:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
+                  textStyle: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.w400)),
             )),
             DrawerListTile(
               title: "Dashboard",
               press: () {
                 //context.mainScreenProvider.navigateToScreen('Dashboard');
               },
-              icon: Icon(Icons.dashboard_rounded),
+              icon: const Icon(Icons.dashboard_rounded),
             ),
             DrawerListTile(
               title: "Users",
               press: () {},
-              icon: Icon(Icons.people_alt_rounded),
+              icon: const Icon(Icons.people_alt_rounded),
             ),
             DrawerListTile(
               title: "Documents",
               press: () {},
-              icon: Icon(Icons.edit_document),
+              icon: const Icon(Icons.edit_document),
             ),
             DrawerListTile(
               title: "Requests",
               press: () {},
-              icon: Icon(Icons.folder),
+              icon: const Icon(Icons.folder),
             ),
             DrawerListTile(
               title: "Chat Logs",
               press: () {},
-              icon: Icon(Icons.message_rounded),
+              icon: const Icon(Icons.message_rounded),
             ),
             DrawerListTile(
                 title: "Log out",
                 press: () {},
-                icon: Icon(Icons.logout_rounded))
+                icon: const Icon(Icons.logout_rounded))
           ],
         ),
       ),

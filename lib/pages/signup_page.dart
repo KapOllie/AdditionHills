@@ -1,9 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_addition_hills/utils/exports.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/gestures.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -15,15 +11,22 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  String? _fname = '';
-  TextEditingController _myController = TextEditingController();
-  TextEditingController _myPhoneController = TextEditingController();
-  TextEditingController _dobController = TextEditingController();
+  final TextEditingController _myController = TextEditingController();
+  final TextEditingController _birthdayController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void dispose() {
+    _lastNameController.dispose();
+    _firstNameController.dispose();
     _myController.dispose();
-    _dobController.dispose(); // Dispose of the date of birth controller
+    _birthdayController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -39,7 +42,7 @@ class _SignupPageState extends State<SignupPage> {
               mode: CupertinoDatePickerMode.date,
               onDateTimeChanged: (DateTime newDateTime) {
                 setState(() {
-                  _dobController.text = newDateTime
+                  _birthdayController.text = newDateTime
                       .toLocal()
                       .toString()
                       .split(' ')[0]; // Format as YYYY-MM-DD
@@ -81,7 +84,7 @@ class _SignupPageState extends State<SignupPage> {
                   )),
                 ),
               ),
-              SizedBox(height: 56),
+              const SizedBox(height: 56),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 height: 100,
@@ -140,7 +143,7 @@ class _SignupPageState extends State<SignupPage> {
                         WithoutIconTextfield(
                           hintText: 'Last Name',
                           labelText: 'Last Name',
-                          controller: _myController,
+                          controller: _lastNameController,
                           validator: (val) {
                             if (val != null && !val.isValidName) {
                               return "Enter a valid last name";
@@ -151,7 +154,7 @@ class _SignupPageState extends State<SignupPage> {
                         WithoutIconTextfield(
                           hintText: 'First Name',
                           labelText: 'First Name',
-                          controller: SignupControllers.firstNameController,
+                          controller: _firstNameController,
                           validator: (val) {
                             if (val != null && !val.isValidName) {
                               return "Enter a valid first name";
@@ -162,7 +165,7 @@ class _SignupPageState extends State<SignupPage> {
                         WithoutIconTextfield(
                           hintText: 'Email',
                           labelText: 'Email',
-                          controller: SignupControllers.emailController,
+                          controller: _emailController,
                           validator: (val) {
                             if (val != null && !val.isValidEmail) {
                               return "Enter a valid email";
@@ -187,39 +190,43 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                             initialCountryCode: 'PH',
                             onChanged: (phone) {
-                              print(phone.completeNumber);
+                              debugPrint(phone.completeNumber);
+                              debugPrint(phone.toString());
                             },
                           ),
                         ),
                         WithoutIconTextfield(
                           hintText: 'Barangay/City/Province',
                           labelText: 'Address',
-                          controller: SignupControllers.addressController,
+                          controller: _addressController,
                         ),
                         Container(
                           margin: const EdgeInsets.symmetric(vertical: 4),
                           child: TextFormField(
-                            controller: _dobController,
+                            controller: _birthdayController,
                             readOnly: true,
                             decoration: InputDecoration(
                                 hintText: 'Birthday',
                                 labelText: 'Birthday',
-                                focusedBorder: OutlineInputBorder(
+                                focusedBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Color(0xff0a0a0a), width: 1.5)),
-                                border: OutlineInputBorder(),
-                                contentPadding: EdgeInsets.symmetric(
+                                border: const OutlineInputBorder(),
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 4, vertical: 10),
-                                enabledBorder: OutlineInputBorder(
+                                enabledBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Color(0xff0a0a0a), width: 1)),
                                 suffixIcon: InkWell(
                                   onTap: _showDatePicker,
-                                  child: Icon(Icons.calendar_month_rounded),
+                                  child:
+                                      const Icon(Icons.calendar_month_rounded),
                                 )),
                           ),
                         ),
-                        const PasswordTextfield(),
+                        PasswordTextfield(
+                          controller: _passwordController,
+                        ),
                         Container(
                           margin: const EdgeInsets.only(top: 16, bottom: 4),
                           child: RichText(

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
 class PasswordTextfield extends StatefulWidget {
-  const PasswordTextfield({
-    super.key,
-  });
+  const PasswordTextfield({super.key, required this.controller});
 
+  final TextEditingController controller;
   @override
   State<PasswordTextfield> createState() => _PasswordTextfieldState();
 }
 
 class _PasswordTextfieldState extends State<PasswordTextfield> {
-  bool _obscureText = true; // This manages whether the text is obscured or not
-  String _password = ''; // Initialize with an empty string
+  bool _obscureText = true;
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -27,12 +25,13 @@ class _PasswordTextfieldState extends State<PasswordTextfield> {
         decoration: InputDecoration(
           hintText: 'Password',
           labelText: 'Password',
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xff0a0a0a), width: 1.5),
           ),
-          border: OutlineInputBorder(),
-          contentPadding: EdgeInsets.symmetric(horizontal: 4, vertical: 10),
-          enabledBorder: OutlineInputBorder(
+          border: const OutlineInputBorder(),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0xff0a0a0a), width: 1),
           ),
           suffixIcon: GestureDetector(
@@ -48,8 +47,6 @@ class _PasswordTextfieldState extends State<PasswordTextfield> {
         obscureText: _obscureText,
         validator: (value) =>
             (value == null || value.length < 6) ? "Password too short." : null,
-        onSaved: (value) =>
-            _password = value ?? '', // Update _password with the new value
       ),
     );
   }

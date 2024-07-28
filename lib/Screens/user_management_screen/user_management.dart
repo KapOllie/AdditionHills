@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_addition_hills/utils/exports.dart';
 
 class UserManagement extends StatelessWidget {
   const UserManagement({super.key});
@@ -14,12 +12,12 @@ class UserManagement extends StatelessWidget {
       child: Column(
         children: [
           Container(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
                   Text('Users ',
                       style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               color: Color(0xff0a0a0a),
                               fontSize: 20,
                               fontWeight: FontWeight.w600))),
@@ -32,14 +30,14 @@ class UserManagement extends StatelessWidget {
                       child: TextField(
                         decoration: InputDecoration(
                             hintText: 'Search by Name, Email or Phone',
-                            border: OutlineInputBorder(
+                            border: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(4))),
                             suffixIcon: InkWell(
                               child: InkWell(
                                 onTap: () {},
                                 child: Container(
-                                  padding: EdgeInsets.all(8),
+                                  padding: const EdgeInsets.all(8),
                                   decoration: const BoxDecoration(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(4))),
@@ -51,13 +49,13 @@ class UserManagement extends StatelessWidget {
                 ],
               )),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             width: double.infinity,
             height: 400,
-            child: DataTable(columns: [
+            child: DataTable(columns: const [
               DataColumn(label: Text('Name')),
               DataColumn(label: Text('Email'))
-            ], rows: [
+            ], rows: const [
               DataRow(
                   cells: [DataCell(Text('Natasha')), DataCell(Text('Amalia'))])
             ]),

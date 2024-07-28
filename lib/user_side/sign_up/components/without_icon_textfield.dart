@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class WithoutIconTextfield extends StatelessWidget {
+class WithoutIconTextfield extends StatefulWidget {
   const WithoutIconTextfield(
       {super.key,
       required this.hintText,
@@ -14,14 +14,19 @@ class WithoutIconTextfield extends StatelessWidget {
   final TextEditingController? controller;
 
   @override
+  State<WithoutIconTextfield> createState() => _WithoutIconTextfieldState();
+}
+
+class _WithoutIconTextfieldState extends State<WithoutIconTextfield> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: TextFormField(
-        controller: controller,
+        controller: widget.controller,
         decoration: InputDecoration(
-            hintText: hintText,
-            labelText: labelText,
+            hintText: widget.hintText,
+            labelText: widget.labelText,
             focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Color(0xff0a0a0a), width: 1.5)),
             border: const OutlineInputBorder(),
@@ -29,7 +34,7 @@ class WithoutIconTextfield extends StatelessWidget {
                 const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
             enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Color(0xff0a0a0a), width: 1))),
-        validator: validator,
+        validator: widget.validator,
       ),
     );
   }

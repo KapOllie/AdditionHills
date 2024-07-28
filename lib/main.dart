@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const LoginPage(),
       routes: {
-        '/signupPage': (context) => SignupPage(),
-        '/loginPage': (context) => LoginPage()
+        '/signupPage': (context) => const SignupPage(),
+        '/loginPage': (context) => const LoginPage()
       },
     );
   }
