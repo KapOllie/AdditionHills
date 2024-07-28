@@ -1,5 +1,7 @@
 // import 'package:flutter/gestures.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_addition_hills/pages/signup_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatelessWidget {
@@ -93,7 +95,7 @@ class LoginPage extends StatelessWidget {
                     )),
               ),
             ),
-            const Text.rich(TextSpan(
+            Text.rich(TextSpan(
               children: [
                 TextSpan(
                     text: 'Don\'t have an account? ',
@@ -103,15 +105,17 @@ class LoginPage extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     )),
                 TextSpan(
-                  text: 'Sign up',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    color: Color(0xff0a0a0a),
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  // recognizer: TapGestureRecognizer() =
-                ),
+                    text: 'Sign up',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Color(0xff0a0a0a),
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pushNamed(context, '/signupPage');
+                      }),
               ],
             ))
           ], // End of children
