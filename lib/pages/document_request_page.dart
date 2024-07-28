@@ -30,7 +30,7 @@ class _DocumentRequestPageState extends State<DocumentRequestPage> {
             appBarTitle: Text('LOGO NAME',
                 style: GoogleFonts.poppins(
                     textStyle: const TextStyle(
-                        color: Color(0xffFFFFFF),
+                        color: Color.fromARGB(255, 99, 87, 87),
                         fontSize: 20,
                         fontWeight: FontWeight.w400))),
             appBar: AppBar(),
