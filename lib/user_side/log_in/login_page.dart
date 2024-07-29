@@ -1,8 +1,4 @@
-// import 'package:flutter/gestures.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_addition_hills/pages/signup_page.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_addition_hills/utils/exports.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -16,7 +12,6 @@ class LoginPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(44.0),
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               margin: const EdgeInsets.only(top: 80),
@@ -24,9 +19,9 @@ class LoginPage extends StatelessWidget {
                 'Logo Name',
                 style: GoogleFonts.poppins(
                     textStyle: const TextStyle(
+                        fontSize: 32,
                         color: Color(0xff0a0a0a),
-                        fontSize: 36,
-                        fontWeight: FontWeight.w800)),
+                        fontWeight: FontWeight.w600)),
               ),
             ),
             Container(
@@ -97,7 +92,7 @@ class LoginPage extends StatelessWidget {
             ),
             Text.rich(TextSpan(
               children: [
-                TextSpan(
+                const TextSpan(
                     text: 'Don\'t have an account? ',
                     style: TextStyle(
                       color: Color(0xff0a0a0a),
@@ -106,7 +101,7 @@ class LoginPage extends StatelessWidget {
                     )),
                 TextSpan(
                     text: 'Sign up',
-                    style: TextStyle(
+                    style: const TextStyle(
                       decoration: TextDecoration.underline,
                       color: Color(0xff0a0a0a),
                       fontSize: 12,

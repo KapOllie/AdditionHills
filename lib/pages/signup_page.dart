@@ -19,7 +19,7 @@ class _SignupPageState extends State<SignupPage> {
   final _phoneController = TextEditingController();
   final _addressController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  String _password = '';
   @override
   void dispose() {
     _lastNameController.dispose();
@@ -84,10 +84,9 @@ class _SignupPageState extends State<SignupPage> {
                   )),
                 ),
               ),
-              const SizedBox(height: 56),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                height: 100,
+                height: 70,
                 width: double.infinity,
                 child: Column(
                   children: [
@@ -129,9 +128,6 @@ class _SignupPageState extends State<SignupPage> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 4,
-              ),
               Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -145,7 +141,7 @@ class _SignupPageState extends State<SignupPage> {
                           labelText: 'Last Name',
                           controller: _lastNameController,
                           validator: (val) {
-                            if (val != null && !val.isValidName) {
+                            if (val != null && val.isValidLastName) {
                               return "Enter a valid last name";
                             }
                             return null;
@@ -156,7 +152,7 @@ class _SignupPageState extends State<SignupPage> {
                           labelText: 'First Name',
                           controller: _firstNameController,
                           validator: (val) {
-                            if (val != null && !val.isValidName) {
+                            if (val!.isEmpty && val.isValidName) {
                               return "Enter a valid first name";
                             }
                             return null;
@@ -173,27 +169,16 @@ class _SignupPageState extends State<SignupPage> {
                             return null;
                           },
                         ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(vertical: 4),
-                          child: IntlPhoneField(
-                            decoration: const InputDecoration(
-                              labelText: 'Phone Number',
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Color(0xff0a0a0a), width: 1.5)),
-                              border: OutlineInputBorder(),
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 4, vertical: 10),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Color(0xff0a0a0a), width: 1)),
-                            ),
-                            initialCountryCode: 'PH',
-                            onChanged: (phone) {
-                              debugPrint(phone.completeNumber);
-                              debugPrint(phone.toString());
-                            },
-                          ),
+                        WithoutIconTextfield(
+                          hintText: 'Phone Number',
+                          labelText: 'Phone Number',
+                          controller: _phoneController,
+                          validator: (val) {
+                            if (val != null && !val.isValidPhone) {
+                              return "Enter a valid phone number";
+                            }
+                            return null;
+                          },
                         ),
                         WithoutIconTextfield(
                           hintText: 'Barangay/City/Province',
@@ -270,6 +255,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         InkWell(
                           onTap: () {
+                            debugPrint(_phoneController.text);
                             _formKey.currentState!.validate();
                             // Make sure _fname is not null
                           },
